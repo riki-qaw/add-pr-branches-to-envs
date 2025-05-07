@@ -1,0 +1,19 @@
+name: Deploy and Notify QA Wolf
+on:
+  pull_request:
+jobs:
+  notify:
+    name: Notify QA Wolf
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify QA Wolf of deployment
+        uses: qawolf/notify-qawolf-on-deploy-action@v1
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        with:
+          # Required: QA Wolf API key from team settings page
+          qawolf-api-key: "${{ secrets.QAWOLF_API_KEY }}"
+          # Optional: URL of the deployed environment to test
+          deployment-url: "${{ needs.deploy-environment.outputs.deployment-url || 'https://example.com' }}"
+          # Optional: Environment variables as JSON string
+          variables: '{"YOUR_VARIABLE_NAME": "YOUR_VARIABLE_VALUE"}'
