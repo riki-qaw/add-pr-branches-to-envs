@@ -17,3 +17,4 @@ jobs:
           deployment-url: "${{ needs.deploy-environment.outputs.deployment-url || 'https://example.com' }}"
           # Optional: Environment variables as JSON string
           variables: '{"YOUR_VARIABLE_NAME": "YOUR_VARIABLE_VALUE"}'
+          qawolf-base-url: "https://app-garden-riki-fu4pwt.us-central1.qawolf.dev"
